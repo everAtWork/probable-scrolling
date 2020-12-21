@@ -14,3 +14,20 @@ async function getPosts() {
 
     return data;
 }
+
+
+async function showPosts() {
+    const posts = await getPosts();
+    posts.forEach(post => {
+        postEl.classList.add('post');
+        postEl.innerHTML = `
+        <div class="number">${post.id}</div>
+        <div class="post-info">
+        <h2 class="post-title">${post.title}</h2>
+        <p class="post-body">${post.body}</p>
+        </div>`
+        postsCont.appendChild(postEl);
+    });
+}
+
+showPosts();
